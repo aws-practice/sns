@@ -32,8 +32,7 @@ app.get('/publish', async (req, res) => {
 
     if (!ifTopicExists) {
         let messageid = await publishToTopic(
-            AWS,
-            'arn:aws:sns:<region>:<subscription-id>' // Subscription ARN
+            AWS
         );
 
         res.send(messageid)
