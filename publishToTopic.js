@@ -1,4 +1,4 @@
-module.exports = (AWS, arn) => {
+module.exports = (AWS) => {
     var params = {
         Message: 'MESSAGE_TEXT', /* required */
         TopicArn: 'arn:aws:sns:region:@@@@@@@@@@@@@@@@@@@@@@' // Topic ARN created by hitting '/' endpoint
