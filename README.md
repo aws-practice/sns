@@ -4,7 +4,6 @@ Steps:
 1. Create SNS User > Assign a Group/ Create a Group > Attach FullSNSAccess policy
 2. Create a Topic by running the application and hitting '/' endpoint
 3. Create a subscription using the topic-arn generated in step 2
-4. update code to use the subscription arn
 5. re-run the application and hit /publish endpoint
 
 
@@ -35,22 +34,4 @@ var params = {
         TopicArn: 'topic-arn from console'
       };
 ```
-
-- also use the topic-arn to create a subscription from AWS console
-- capture the subscription arn and update app.js
-- below is the code snippet you need to update
-```app.get('/publish', async (req, res) => {
-    const ifTopicExists = await checkIfTopicExists(AWS, 'ON_POST_CREATED');
-
-    if (!ifTopicExists) {
-        let messageid = await publishToTopic(
-            AWS,
-            'arn:aws:sns:<region>:<subscription-id>' // Subscription ARN
-        );
-
-        res.send(messageid)
-    }
-});
-```
-
 - now re-run the application and hit the endpoint, you will receive the notification on channel specified in subscription
